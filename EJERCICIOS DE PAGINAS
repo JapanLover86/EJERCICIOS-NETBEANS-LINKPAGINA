@@ -1,0 +1,1221 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Enero {
+
+Integer numeroDiaMes;
+String diaSemana;
+Integer temperaturaMedia;
+
+public Enero() {
+
+rellenarDia();
+rellenarDiaSemana();
+rellenarTemperaturaMedia();
+
+}
+
+public void rellenarDia(){
+
+Scanner teclado = new Scanner(System.in);
+
+System.out.println("Dia del mes: ");
+
+numeroDiaMes = teclado.nextInt();
+}
+
+public Integer mostrarDia(){
+
+return numeroDiaMes;
+}
+
+public void rellenarDiaSemana(){
+
+Scanner teclado = new Scanner(System.in);
+
+System.out.println("Dia de la semana: ");
+
+diaSemana = teclado.nextLine();
+}
+
+public String mostrarDiaSemana(){
+
+return diaSemana;
+}
+
+public void rellenarTemperaturaMedia(){
+
+Scanner teclado = new Scanner(System.in);
+
+System.out.println("Temperatura Media: ");
+
+temperaturaMedia = teclado.nextInt();
+}
+
+public Integer mostrarTemperaturaMedia(){
+
+return temperaturaMedia;
+}
+
+public static void mostrarTemperaturas(ArrayList <Enero> lista) {
+
+System.out.println("---------------El Mes de Enero Hizo-----------");
+
+for (int i = 0; i < lista.size(); i++) {
+
+System.out.println("Para el " + lista.get(i).mostrarDiaSemana() + " dia " + lista.get(i).mostrarDia() + " Hizo una temperatura de " + lista.get(i).mostrarTemperaturaMedia());
+
+}
+}
+
+public static void temperaturaMedia(ArrayList <Enero> lista) {
+
+Integer media;
+Integer suma = 0;
+Integer contador = 0;
+for (int i = 0; i < lista.size(); i++) {
+
+suma = suma + lista.get(i).mostrarTemperaturaMedia();
+contador++;
+
+
+}
+
+media = suma / contador;
+
+System.out.println("La Temperatura media es de: " + media);
+
+}
+
+public static void diasMasCaluroso(ArrayList <Enero> lista) {
+
+Integer caluroso = 0;
+
+for (int i = 0; i < lista.size(); i++) {
+
+if (lista.get(i).mostrarTemperaturaMedia() > caluroso) {
+
+caluroso = lista.get(i).mostrarTemperaturaMedia();
+
+}
+
+}
+
+System.out.println("---------Los dias mas calurosos son------------");
+
+for (int i = 0; i < lista.size(); i++) {
+
+
+
+if (caluroso == lista.get(i).mostrarTemperaturaMedia()) {
+
+System.out.println("Para el " + lista.get(i).mostrarDiaSemana() + " dia " + lista.get(i).mostrarDia() + " Hizo una temperatura de " + lista.get(i).mostrarTemperaturaMedia());
+
+
+}
+
+}
+
+}
+
+public static void main(String[] args) {
+
+ArrayList <Enero> lista = new ArrayList<>(31);
+ArrayList <Enero> mostrarCaluroso = new ArrayList<>();
+
+
+Scanner teclado = new Scanner(System.in);
+
+String respuesta;
+
+do {
+
+System.err.println("Datos del dia: ");
+lista.add(new Enero());
+System.out.println("Desea introducir otro dia [SI / NO]");
+respuesta = teclado.nextLine();
+
+} while (respuesta.equalsIgnoreCase("Si"));
+
+mostrarTemperaturas(lista);
+temperaturaMedia(lista);
+diasMasCaluroso(lista);
+}
+
+}
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SustituirPorCeros {
+
+public static void solicitarNumeros(ArrayList <Integer> listaNumeros) {
+Integer numero;
+boolean contador = true;
+String salir = "Si";
+Scanner teclado = new Scanner(System.in);
+
+System.out.println("------Lista de numeros Enteros----------");
+
+do {
+
+if (contador == true) {
+
+System.out.println("Introduce un numero mayor que 0 ");
+numero = teclado.nextInt();
+
+if (numero <=0) {
+
+System.out.println("El numero no es correcto!!!");
+
+}else{
+
+listaNumeros.add(numero);
+contador = false;
+
+}
+}
+
+System.out.println("Introduce otro numero: ");
+
+numero = teclado.nextInt();
+
+if (numero <=0) {
+
+System.out.println("El numero no es correcto!!!");
+
+}else{
+
+listaNumeros.add(numero);
+contador = false;
+
+}
+System.out.println("Si quieres dejar de meter numeros escribe: \"Si\"");
+salir = teclado.next();
+
+} while (salir.equalsIgnoreCase("No"));
+
+//System.out.println(listaNumeros);
+
+}
+
+public static void rellenarDeCeros(ArrayList <Integer> listaNumeros) {
+
+ArrayList listaCopia = (ArrayList) listaNumeros.clone();
+
+for (int i = 0; i < listaNumeros.size(); i++) {
+
+for (int j = 0; j < listaCopia.size(); j++) {
+
+if ((i != j) && (listaNumeros.get(i) == listaCopia.get(j))) {
+
+listaNumeros.set(i, 0);
+listaNumeros.set(j, 0);
+
+}
+
+}
+}
+
+//System.out.println(listaNumeros);
+
+}
+
+public static void mostrarListas(ArrayList <Integer> listaNumeros) {
+
+System.out.println("------Lista de numeros Enteros----------");
+
+for (int i = 0; i < listaNumeros.size(); i++) {
+
+System.out.print(" " + listaNumeros.get(i) + " ");
+
+}
+
+System.out.println("");
+
+}
+public static void main(String[] args) {
+
+ArrayList <Integer> listaNumeros = new ArrayList <> ();
+solicitarNumeros(listaNumeros);
+mostrarListas(listaNumeros);
+rellenarDeCeros(listaNumeros);
+mostrarListas(listaNumeros);
+}
+
+}
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class ejercicioObligatorios06 {
+
+public static void rellenarDias (String [] dias) {
+
+dias[0] = "Lunes";
+dias[1] = "Martes";
+dias[2] = "Miercoles";
+dias[3] = "Jueves";
+dias[4] = "Viernes";
+dias[5] = "Sabado";
+dias[6] = "Domingo";
+
+}
+
+public static void rellenarMes(ArrayList < ArrayList < Integer > > mes , String [] dias) {
+
+Scanner teclado = new Scanner(System.in);
+
+Integer semana = 4;
+
+Integer temperatura;
+
+System.out.println("Introduce la temperatura para el dia");
+
+for (int i = 0; i < semana; i++) {
+
+for (int j = 0; j < dias.length; j++) {
+
+System.out.println("Para la Semana " + i + " El " + dias[j] + " hizo una temperatura de: ");
+temperatura = teclado.nextInt();
+mes.add(new ArrayList<Integer>());
+mes.get(i).add(temperatura);
+
+}
+
+}
+
+//System.out.println(mes);
+
+}
+
+public static void mostrarMes(ArrayList < ArrayList < Integer > > mes , String [] dias) {
+
+for (int i = 0; i < mes.size(); i++) {
+
+for (int j = 0; j < mes.get(i).size(); j++) {
+
+
+System.out.println("Para el dia " + dias[j] + " de la semana " + i + " hizo una temperatura de: " + mes.get(i).get(j));
+
+
+}
+
+}
+
+}
+
+public static void calcularMedia(ArrayList < ArrayList < Integer > > mes , String [] dias) {
+
+double media =0;
+Integer suma = 0;
+Integer contador =0;
+for (int i = 0; i < mes.size(); i++) {
+
+for (int j = 0; j < mes.get(i).size(); j++) {
+
+
+suma = suma + mes.get(i).get(j);
+contador++;
+
+}
+
+}
+
+media = suma / contador;
+
+System.out.println("La temperatura Media es " + media + " Âºc");
+
+}
+
+public static void diasMasCalurosos(ArrayList < ArrayList < Integer > > mes , String [] dias) {
+Integer mayor;
+int se;
+String di;
+mayor = mes.get(0).get(0);
+di = dias[0];
+se = 0;
+
+for (int i = 0; i < mes.size(); i++) {
+
+for (int j = 0; j < mes.get(i).size(); j++) {
+
+if (mes.get(i).get(j) > mayor) {
+
+mayor = mes.get(i).get(j);
+di = dias[j];
+se = i;
+}
+
+
+}
+
+}
+
+System.out.println(" El " + di + " de la semana " + se + " es el mas caluroso: " + mayor);
+
+}
+public static void main(String[] args) {
+
+String [] dias = new String[7];
+rellenarDias(dias);
+ArrayList < ArrayList < Integer > > mes = new ArrayList < >();
+rellenarMes(mes, dias);
+mostrarMes(mes, dias);
+calcularMedia(mes, dias);
+diasMasCalurosos(mes, dias);
+}
+
+}
+
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class intercambioNumero {
+
+public static void introducirValores(ArrayList <Integer> listaNumeros){
+
+Scanner teclado = new Scanner(System.in);
+Integer numero;
+
+System.out.println("Introduce un numero: ");
+
+do {
+
+numero = teclado.nextInt();
+
+listaNumeros.add(numero);
+
+System.out.println("Introduce otro numero y si quieres salir introduce uno negativo");
+
+} while (numero >= 0);
+
+for (int i = 0; i < listaNumeros.size(); i++) {
+
+if (listaNumeros.get(i) < 0 ) {
+
+listaNumeros.remove(i);
+
+}
+
+}
+
+}
+
+public static void mostrarLista(ArrayList <Integer> listaNumeros){
+System.out.println("La lista contiene los siguientes nÃºmeros");
+System.out.println(listaNumeros);
+}
+
+public static void intercambiarPosiciones(ArrayList <Integer> listaNumeros){
+
+Integer aux;
+
+aux = listaNumeros.get(1);
+listaNumeros.set(1, listaNumeros.get(3));
+listaNumeros.set(3, aux);
+
+}
+
+public static void main(String[] args) {
+
+ArrayList <Integer> listaNumeros = new ArrayList <> ();
+introducirValores(listaNumeros);
+mostrarLista(listaNumeros);
+intercambiarPosiciones(listaNumeros);
+mostrarLista(listaNumeros);
+}
+
+}
+
+LISTA ENLAZADA
+package nuevo;
+
+public class ListaEnlazada {
+
+protected Nodo primero;
+private int tamaño = 0;
+
+public ListaEnlazada() {
+primero = null;
+tamaño = 0;
+}
+
+public Nodo getPrimero() {
+return primero;
+
+}
+
+public void setPrimero(Nodo primero) {
+this.primero = primero;
+}
+
+public int getTamaño() {
+return tamaño;
+}
+
+public void setTamaño(int tamaño) {
+this.tamaño = tamaño;
+}
+
+public boolean esVacio() {
+return primero == null;
+}
+
+public void insertaAlFinal(int x) {
+Nodo nuevo = new Nodo(x);
+Nodo p;
+if (primero == null) {
+primero = nuevo;
+} else {
+p = primero;
+while (p.getSiguiente() != null) {
+p = p.getSiguiente();
+}
+p.setSiguiente(nuevo);
+
+}
+tamaño++;
+}
+
+//EJEMPLO 1
+public void insertarP(int x, int pos){
+Nodo nuevo= new Nodo(x,null);
+if(pos==1){
+nuevo.setSiguiente(primero);
+primero=nuevo;
+}else{
+Nodo p=primero;
+int cont=1;
+while(p!=null && cont<pos-1){
+p=p.getSiguiente();
+cont++;
+}
+if(p!=null){
+nuevo.setSiguiente(p.getSiguiente());
+p.setSiguiente(nuevo);
+
+}else
+System.out.println("Posiciòn no valida");
+}
+}
+public Nodo posicionDeLaiesima(int pos){
+Nodo a=primero;
+int con=0;
+for(int i=1;a!=null;i++){
+con++;
+if(con==pos) {
+return a;
+}
+a=a.getSiguiente();
+}
+return null;
+}
+//EJEMPLO 2
+public void suprimirLaIesima(int pos) {
+Nodo tem;
+if(pos<1 || pos>getTamaño()){
+System.out.println("La posicion no existe");
+}else
+if(pos==1){
+primero=primero.getSiguiente();
+}else{
+Nodo p=primero;
+int con=1;
+while(con<pos-1){
+p=p.getSiguiente();
+con++;
+}
+tem=p.getSiguiente();
+p.setSiguiente(tem.getSiguiente());
+}
+}
+
+//EJEMPLO 3
+public void devolverUltimaPosicion() {
+Nodo a = primero, anterior, siguiente;
+int con = 0, posi = 0, numero = 0;
+while (a != null) {
+con++;
+anterior = a;
+siguiente = a.getSiguiente();
+if (siguiente == null) {
+posi = con;
+numero = a.getInfo();
+}
+a = a.getSiguiente();
+}
+System.out.println("la ultima posicion de la iesima es " + posi + " con numero [" + numero + "]");
+
+}
+
+//EJEMPLO 4
+public void ordenAscendente(){
+Nodo p,q;
+int aux;
+p=primero;
+while(p.getSiguiente()!=null){
+q=p.getSiguiente();
+while(q!=null){
+if(p.getInfo()>q.getInfo()){
+aux=p.getInfo();
+p.setInfo(q.getInfo());
+q.setInfo(aux);
+}
+q=q.getSiguiente();
+}
+p=p.getSiguiente();
+}
+}
+public void insertarOrdenada(int x){
+Nodo nuevo= new Nodo(x);
+if(primero==null)
+primero=nuevo;
+else
+if(x<primero.getInfo()){
+nuevo.setSiguiente(primero);
+primero=nuevo;
+}
+else{
+Nodo p=primero;
+while(p.getSiguiente()!=null && p.getSiguiente().getInfo()<x)
+p=p.getSiguiente();
+nuevo.setSiguiente(p.getSiguiente());
+p.setSiguiente(nuevo);
+}
+}
+
+//EJEMPLO 6
+
+public boolean estaOrdenado(){
+Nodo p=primero;
+while(p.getSiguiente()!=null){
+if(p.getInfo()>p.getSiguiente().getInfo()){
+return false;
+}
+p=p.getSiguiente();
+}
+return true;
+}
+
+//EJEMPLO 7
+public boolean verificarSiSeEncuentraNumero(int inf) {
+Nodo a = primero;
+boolean verificar = false;
+while (a != null) {
+if (a.getInfo() == inf) {
+verificar = true;
+break;
+}
+a = a.getSiguiente();
+}
+return verificar;
+}
+//ejemplo 8
+public void mostrarInversa() {
+alreves(primero);
+}
+
+public void alreves(Nodo p) {
+if (p != null) {
+alreves(p.siguiente);
+System.out.print("[" + p.info + "]" + "==>");
+}
+}
+
+//EJEMPLO 9
+public void imprimirNElementos(int can) {
+Nodo a = primero;
+int con = 0;
+int total=getTamaño()-can;
+Nodo inicio;
+for(inicio=primero;inicio!=null;inicio=inicio.getSiguiente()){
+con++;
+
+if(con>total && con<=getTamaño()){
+System.out.println(inicio.getInfo());
+
+}
+}
+
+}
+
+//EJEMPLO 10
+public void elementoCentral() {
+Nodo a = primero;
+int con = 0, medio = getTamaño() / 2;
+if (!esVacio()) {
+while (a != null) {
+
+Nodo aux = a;
+Nodo siguiente = a.getSiguiente();
+con++;
+if (con == medio) {
+if (getTamaño() % 2 == 0) {
+System.out.println("Elemento central es [" + aux.getInfo() + "] y [" + siguiente.getInfo() + "]");
+} else {
+System.out.println("Elemento decntral es[" + siguiente.getInfo() + "]");
+}
+}
+
+a = a.getSiguiente();
+}
+} else {
+System.out.println("Lista vacia");
+}
+
+}
+
+public void mostrar() {
+Nodo p = primero;
+while (p != null) {
+System.out.print("[" + p.getInfo() + "] ==> ");
+p = p.getSiguiente();
+}
+}
+
+    
+
+}
+
+
+NODO
+package nuevo;
+
+public class Nodo {
+
+public int info;
+public Nodo siguiente;
+
+public Nodo() {
+siguiente = null;
+info = 0;
+}
+
+public Nodo(int x) {
+siguiente = null;
+
+info = x;
+}
+
+public Nodo(int x, Nodo siguiente) {
+info = x;
+this.siguiente = siguiente;
+
+}
+
+public int getInfo() {
+return info;
+}
+
+public void setInfo(int info) {
+this.info = info;
+}
+
+public Nodo getSiguiente() {
+return siguiente;
+}
+
+public void setSiguiente(Nodo siguiente) {
+this.siguiente = siguiente;
+}
+
+}
+
+
+
+LISTAENLAZADA
+package nuevo;
+
+import java.io.IOException;
+import java.util.Scanner;
+
+/**
+*
+* @author levi
+*/
+public class ProyectoListasEnlazadas {
+public static void menurPrincipal() {
+Scanner sc = new Scanner(System.in);
+ListaEnlazada lista = new ListaEnlazada();
+
+int num;
+int opcion;
+do {
+System.out.println("\n");
+System.out.println("MENU PRINCIPAL");
+System.out.println("1: AGREGAR LISTA INICIO" );
+System.out.println("2: MOSTRAR LISTA");
+System.out.println("3: AÑADIR EN LA POCION IESIMA");
+System.out.println("4: DEVOLVER LA POSCION DE LA IESIMA DE UN ELEMENTO");
+System.out.println("5: ORDENAR LISTA DE FORMA CRECIENTE");
+System.out.println("6: VERIFICAR SI UNA LISTA ESTA ORDENADA");
+System.out.println("7: VERIFICAR SI UN NUMERO SE ENCUENTRA EN LA LISTA");
+System.out.println("8: INVERTIR LA LISTA");
+System.out.println("9: MOSTRAR N ELMENTOS DE LA LISTA");
+System.out.println("10: ELEMENTO CENTRAL DE LA LISTA");
+System.out.println("11: AGREGAR UN NUMERO EN LA LISTA ORDENADA");
+System.out.println("12: SUPRIMIR UN NUMERO");
+System.out.println("13: SALIR");
+System.out.println("OPCION");
+opcion = sc.nextInt();
+switch (opcion) {
+case 1:
+System.out.println("INGRESE CANTIDAD DE NUMEROS");
+int cantidad = sc.nextInt();
+for (int i = 0; i < cantidad; i++) {
+System.out.println("NUMERO [" + (1 + i) + " ]");
+int x = sc.nextInt();
+lista.insertaAlFinal(x);
+
+}
+break;
+
+case 2:
+if (lista.esVacio()) {
+System.out.println("La lista esta vacia ");
+} else {
+System.out.println("MOSTRANDO LISTA ");
+lista.mostrar();
+}
+
+break;
+case 3:
+if (lista.esVacio()) {
+System.out.println("La lista esta vacia ");
+} else {
+System.out.println("Igrese numero ");
+num = sc.nextInt();
+System.out.println("Ingrese posicion");
+int pos = sc.nextInt();
+lista.insertarP(num, pos);
+}
+break;
+
+case 4:
+if (lista.esVacio()) {
+System.out.println("Lista vacia");
+} else {
+System.out.println("Ingrese numero a buscar");
+int nume = sc.nextInt();
+if (lista.posicionDeLaiesima(nume) != null) {
+System.out.println("La posicion es " + lista.posicionDeLaiesima(nume));
+} else {
+System.out.println("La pocicion no se encontro " + lista.posicionDeLaiesima(nume));
+}
+System.out.println("");
+
+}
+break;
+case 5:
+if (lista.esVacio()) {
+System.out.println("Lista vacia");
+} else {
+System.out.println("ORDENANDO DE FORMA CRECIENTE");
+lista.ordenAscendente();
+lista.mostrar();
+}
+
+break;
+case 6:
+System.out.println("VERIFICANDO");
+if (lista.estaOrdenado()) {
+System.out.println("La lista esta ordena ");
+
+} else {
+System.out.println("La lista no esta ordenada");
+}
+break;
+case 7:
+if (lista.esVacio()) {
+System.out.println("Lista vacia ");
+} else {
+System.out.println("Ingrese numero a buscar");
+int numeros = sc.nextInt();
+if (lista.verificarSiSeEncuentraNumero(numeros)) {
+System.out.println("NUMERO ENCONTRADO EN LA LISTA ");
+
+} else {
+System.out.println("NUMERO NO ENCONTRADO EN LA LISTA");
+
+}
+
+}
+break;
+
+case 8:
+System.out.println("LISTA INVERTIDA");
+lista.mostrarInversa();
+break;
+case 9:
+if (lista.esVacio()) {
+System.out.println("Lista vacia ");
+} else {
+System.out.println("cunatos elementos desea mostrar");
+num = sc.nextInt();
+if (num <= lista.getTamaño()) {
+lista.imprimirNElementos(num);
+
+} else {
+System.out.println("NO EXISTE ESA CANTIDAD DE NUMEROS EN LA LISTA");
+
+}
+}
+break;
+
+case 10:
+if (lista.esVacio()) {
+System.out.println("Lista vacia ");
+} else {
+System.out.println("MOSTRANDO NUMERO CENTRAL");
+lista.elementoCentral();
+}
+break;
+case 11:
+if (lista.esVacio()) {
+System.out.println("No hay elementos en la lista ");
+} else {
+System.out.println("Ingrese numero ");
+num = sc.nextInt();
+lista.insertarOrdenada(num);
+lista.mostrar();
+}
+break;
+case 12:
+if (lista.esVacio()) {
+System.out.println("La posicion a buscar ");
+} else {
+System.out.println("Ingrese numero ");
+int n = sc.nextInt();
+lista.suprimirLaIesima(n);
+System.out.println("Elemnto eliminado");
+}
+
+break;
+
+default:
+System.out.println("SALIENDO DEL PROGRAMA ");
+}
+} while (opcion != 13);
+}
+
+public static void main(String[] args) {
+
+menurPrincipal();
+}
+}
+
+
+
+-------------------------------
+
+
+package proyectolistasenlazadas;
+
+public class ListaEnLazada {
+
+protected Nodo primero;
+private int tamaño = 0;
+
+public int getTamaño() {
+return tamaño;
+}
+
+public void setTamaño(int tamaño) {
+this.tamaño = tamaño;
+}
+
+public ListaEnLazada() {
+primero = null;
+}
+
+public Nodo getPrimero() {
+return primero;
+}
+
+public void setPrimero(Nodo primero) {
+this.primero = primero;
+}
+
+public boolean esVacio() {
+return primero == null;
+}
+
+public void insertarAlinicio(double x) {
+Nodo nuevo = new Nodo(x);
+nuevo.setInfo(x);
+if (esVacio()) {
+
+primero = nuevo;
+} else {
+nuevo.setSiguiente(primero);
+primero = nuevo;
+}
+tamaño++;
+
+}
+
+public void insertarAlFinal(double x) {
+Nodo nuevo = new Nodo(x);
+nuevo.setInfo(x);
+if (esVacio()) {
+primero = nuevo;
+} else {
+Nodo aux = primero;
+while (aux.getSiguiente() != null) {
+aux = (Nodo) aux.getSiguiente();
+}
+aux.setSiguiente(nuevo);
+}
+tamaño++;
+}
+
+public void mostrar() {
+Nodo p = primero;
+while (p != null) {
+System.out.println("[" + p.getInfo() + "]");
+p = (Nodo) p.getSiguiente();
+}
+}
+
+public void borrarPrimero() {
+
+primero = (Nodo) primero.getSiguiente();
+
+}
+
+public void mayor() {
+Nodo a = primero;
+    double mayor = primero.getInfo();
+while (a != null) {
+
+if (a.getInfo() > mayor) {
+mayor = a.getInfo();
+
+}
+a = (Nodo) a.getSiguiente();
+
+}
+System.out.println("El mayor es " + mayor);
+}
+
+public void menor() {
+Nodo a = primero;
+    double menor = primero.getInfo();
+while (a != null) {
+
+if (a.getInfo() < menor) {
+menor = a.getInfo();
+
+}
+a = (Nodo) a.getSiguiente();
+
+}
+System.out.println("El menor es " + menor);
+}
+
+public void promedio() {
+Nodo a = primero;
+double suma = 0;
+int con = 0;
+while (a != null) {
+suma += a.getInfo();
+con++;
+a = (Nodo) a.getSiguiente();
+}
+double promedio = suma / con;
+System.out.println("el promedio es" + promedio);
+}
+
+public int buscarPosicion(double x) {
+Nodo a = primero;
+int posi = -1;
+int con = 0;
+while (a != null) {
+con++;
+if (a.getInfo() == x) {
+posi = con;
+}
+a = (Nodo) a.getSiguiente();
+}
+return posi;
+}
+
+public void borrar(int pos) {
+if (pos >= 0 && pos < getTamaño()) {
+if (pos == 0) {
+primero = (Nodo) primero.getSiguiente();
+} else {
+Nodo aux = (Nodo) primero.getSiguiente();
+for (int i = 0; i < getTamaño(); i++) {
+aux = (Nodo) aux.getSiguiente();
+}
+Nodo siguiente = (Nodo) aux.getSiguiente();
+aux.setSiguiente((Nodo) siguiente.getSiguiente());
+}
+tamaño++;
+
+}
+
+}
+
+public void ordenarAcendente() {
+Nodo a=primero;
+double aux;
+while(a!=null){
+Nodo siguiente=(Nodo) a.getSiguiente();
+if(a.getInfo()>siguiente.getInfo()){
+aux= a.getInfo();
+a.setInfo(siguiente.getInfo());
+siguiente.setInfo(a.getInfo());
+}
+a=(Nodo) a.getSiguiente();
+}
+}
+}
+
+
+package proyectolistasenlazadas;
+
+/**
+* Fecha: 15/05/2017
+* Autor: Antonio Aburto Cortez
+*/
+public class Nodo {
+
+private double info;
+private Nodo siguiente;
+
+public Nodo(){
+siguiente=null;
+}
+
+public Nodo (double x){
+siguiente=null;
+info=x;
+}
+
+public Nodo(double x,Nodo siguiente){
+info=x;
+this.siguiente=siguiente;
+}
+
+public double getInfo() {
+return info;
+}
+
+public void setInfo(double info) {
+this.info = info;
+}
+
+public Nodo getSiguiente() {
+return siguiente;
+}
+
+public void setSiguiente(Nodo siguiente) {
+this.siguiente = siguiente;
+}
+public void VerNodo(){
+System.out.println("["+info+"]");
+}
+}
+
+
+
+package proyectolistasenlazadas;
+
+import java.util.Scanner;
+
+public class ProyectoListasEnlazadas {
+
+public static Scanner sc = new Scanner(System.in);
+public static ListaEnLazada miLista = new ListaEnLazada();
+
+public static void main(String[] args) {
+
+int op = 0;
+
+do {
+System.out.println("menu de opciones");
+System.out.println("[1] Ingresar elementos a las lista");
+System.out.println("[2] Mostrar lista");
+System.out.println("[3] Ingrese Elemento Al final");
+System.out.println("[4] Borrar numero del inicio");
+System.out.println("[5] Mayor numero");
+System.out.println("[6] Menor numero");
+System.out.println("[7] Promedio");
+System.out.println("[8] Ordenar Acendente ");
+System.out.println("[9] Eliminar por posicion");
+System.out.println("[10] Salir");
+System.out.println("Ingrese opcion[1-10]");
+op = sc.nextInt();
+switch (op) {
+
+case 1:
+
+double x = 0;
+System.out.println("numero de elementos de la lista");
+int n = sc.nextInt();
+for (int j = 0; j < n; j++) {
+System.out.println("Ingrese numero::" + j);
+x = sc.nextDouble();
+miLista.insertarAlinicio(x);
+}
+break;
+case 2:
+System.out.println("Los numeros ingresados son::");
+miLista.mostrar();
+break;
+case 3:
+double e;
+System.out.println("numero de elementos de la lista");
+int r = sc.nextInt();
+for (int i = 0; i < r; i++) {
+System.out.println("Ingrese numer::" + i);
+e = sc.nextDouble();
+miLista.insertarAlFinal(e);
+}
+break;
+case 4:
+System.out.println("Borrando numero del inicio");
+miLista.borrarPrimero();
+break;
+case 5:
+
+miLista.mayor();
+break;
+case 6:
+miLista.menor();break;
+
+case 7:
+System.out.println("Promedio ");
+miLista.promedio();
+break;
+case 8:
+System.out.println("ORDENAMIENTO ACENDENTE");
+miLista.ordenarAcendente();
+miLista.mostrar();
+break;
+case 9:
+System.out.println("Ingrese Numero a eliminar ");
+double numero=sc.nextDouble();
+
+if(miLista.buscarPosicion(numero)!=-1){
+int p=miLista.buscarPosicion(numero);
+miLista.borrar(p);
+System.out.println("numero eliminado");
+}else{
+System.out.println("Nuemro no encontrado ");
+}
+break;
+
+default:
+System.out.println("Saliendo del programa ");
+}
+} while (op != 10);
+}
+}
+
+------------
